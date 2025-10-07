@@ -49,3 +49,9 @@
    cd whatsapp-dialog-emulator
 2 запусти установку зависимостей:
 и пропиши в консоль .\install.ps1
+
+или же используй
+```bash
+pip install -r requirements.txt
+playwright install chromium
+
