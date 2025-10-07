@@ -6,7 +6,7 @@ from pyfiglet import Figlet
 
 def print_logo():
     f = Figlet(font='block', width=100)
-    logo_text = "WhatsapDialogEmulater"
+    logo_text = "WhatsWarming"
     footer_text = "by soar812"
 
     print("\n" + "="*60)
