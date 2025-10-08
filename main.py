@@ -53,11 +53,16 @@ elif CONTACT_2_NAME == '1':
 
 print("Хочешь ли ты редактировать фразы которыми будут общаться боты? ")
 redact = str(input())
-if redact == 'да' or '+' or "yes":
+if redact == 'да' and '+' and "yes":
     file_path = "./phrases.txt"
-    subprocess.run(["notepad", file_path])
+    if os.name == "nt":
+        subprocess.run(["notepad", file_path])
+    elif os.name == "posix":
+        subprocess.run(['nano', 'myfile.txt'], stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr)
 elif redact == 'нет' or 'я гей' or 'окак':
     print("ОКАК")
+else:
+    print("НАчинаем!")
 def howlong():
     print("Сколько минут будет идти диалог? ")
     how_long = int(input(""))
@@ -68,6 +73,7 @@ SESSION_DIR_2 = "./whatsapp_session_2"
 # Укажи путь к фото (должен существовать!)
 PHOTO_PATH = "./photo.jpg"  # ← замени на свой файл, например: "cat.png"
 VIDEO_PATH = "./video.mp4"
+AUDIO_PATH = "./audio.mp3"
 # Смысловые фразы для генерации
 
 with open('phrases.txt', 'r', encoding='utf-8') as f:
@@ -153,7 +159,9 @@ async def send_photo(page, contact_name, photo_path, user_label):
         print(f"[{user_label}] ❌ Ошибка отправки фото: {e}")
         await page.screenshot(path=f"debug_{user_label}_final.png")
 
-# === Остальные функции (без изменений, кроме wait_for_whatsapp_load) ===
+
+
+
 
 async def wait_for_whatsapp_load(page, user_label, timeout=90000):
     print(f"[{user_label}] Ожидание полной загрузки WhatsApp...")
@@ -215,6 +223,9 @@ async def simulate_conversation(page1, page2):
         if message_count % 3 == 0 and os.path.exists(PHOTO_PATH):
             await asyncio.sleep(2)
             await send_photo(page1, CONTACT_1_NAME, PHOTO_PATH, "Аккаунт 1")
+
+
+
 
         await asyncio.sleep(random.uniform(8, 15))
 
