@@ -25,7 +25,8 @@ def random_picture():
         pic3 = "./photo_2025-10-07_16-42-09.jpg"
         pic4 = "./photo_2025-10-07_16-42-13.jpg"
         pic5 = "./photo_2025-10-07_16-42-15.jpg"
-        rand_int = random.randint(0,4)
+        audio1 = "./FORTUNA_812_-_archivecore_prod_cloudly006_78674493.mp3"
+        rand_int = random.randint(0,5)
         if rand_int == 0:
             return pic1
         elif rand_int == 1:
@@ -36,6 +37,8 @@ def random_picture():
             return pic4
         elif rand_int == 4:
             return pic5
+        elif rand_int == 5:
+            return audio1
         
 # === Настройки ===
 print("введите сначала имя первого контаката и нажмите Enter после этого \nвведите имя второго контакта без ошибок соблюдая регистрт и опять нажмиите Enter\nесли хотите использовать дефолтный профиль (Филип,Алмаз) то просто напиши 1")
