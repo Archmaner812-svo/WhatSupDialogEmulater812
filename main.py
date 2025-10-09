@@ -4,6 +4,12 @@ import os
 from playwright.async_api import async_playwright
 from pyfiglet import Figlet
 import subprocess
+import platform
+import tkinter
+from tkinter import messagebox
+import time
+
+
 
 def print_logo():
     f = Figlet(font='block', width=100)
@@ -62,10 +68,20 @@ if redact == 'да' and '+' and "yes":
         subprocess.run(["notepad", file_path])
     elif os.name == "posix":
         subprocess.run(['nano', 'myfile.txt'], stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr)
-elif redact == 'нет' or 'я гей' or 'окак':
+elif redact ==  'я гей' or 'окак' or '812':
     print("ОКАК")
+    root = tkinter.Tk()
+    root.withdraw()  # скрыть главное окно
+    messagebox.showwarning("812", "ВАШ КОМПЬЮТЕР ВЗЛОМАН 812 ЛЕГИОНОМ!!!")
+    os.startfile(r"photo_2025-10-07_16-41-56.jpg")
+    os.startfile(r"untitled.mp3")
+    time.sleep(10)
+    
+    
+    root.destroy()
+    
 else:
-    print("НАчинаем!")
+    print("Начинаем!")
 def howlong():
     print("Сколько минут будет идти диалог? ")
     how_long = int(input(""))
